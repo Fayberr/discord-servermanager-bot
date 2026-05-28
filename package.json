@@ -1,0 +1,17 @@
+{
+  "name": "discord-servermanager-bot",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "An AI-powered Discord server manager bot that generates and edits servers and saves/loads templates.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "register": "node src/register-commands.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "axios": "^1.6.8",
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.5"
+  }
+}
