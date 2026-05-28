@@ -39,6 +39,8 @@ Also includes a client-side layout exporter to clone server configurations from 
 Create a `.env` file in the root directory:
 ```env
 DISCORD_TOKEN=your_discord_bot_token
+AUTHORIZED_USER_ID=your_discord_user_id
+GUILD_ID=your_development_guild_id
 GEMINI_API_KEY=your_gemini_api_key
 ```
 

@@ -109,7 +109,18 @@ const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
       { body: commands },
     );
     console.log('Successfully registered global commands.');
-
+    if (process.env.GUILD_ID) {
+      try {
+        console.log(`Registering guild-specific commands for Guild ID: ${process.env.GUILD_ID}`);
+        await rest.put(
+          Routes.applicationGuildCommands(clientId, process.env.GUILD_ID),
+          { body: commands },
+        );
+        console.log('Successfully registered guild-specific commands.');
+      } catch (guildErr) {
+        console.warn(`Note: Could not register guild-specific commands for Guild ID ${process.env.GUILD_ID} (${guildErr.message}). Bot may not be in this guild yet.`);
+      }
+    }
 
     console.log('Successfully reloaded application (/) commands.');
   } catch (error) {
