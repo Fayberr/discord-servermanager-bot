@@ -93,14 +93,6 @@ client.on('interactionCreate', async (interaction) => {
   if (interaction.isChatInputCommand()) {
     const { commandName } = interaction;
 
-    // Check if the user is authorized
-    const authorizedUser = process.env.AUTHORIZED_USER_ID;
-    if (authorizedUser && interaction.user.id !== authorizedUser) {
-      return interaction.reply({ 
-        content: '❌ You are not authorized to use this bot.', 
-        ephemeral: true 
-      });
-    }
 
     // Check administrator/guild permissions
     if (!interaction.member.permissions.has(PermissionFlagsBits.Administrator)) {

@@ -20,21 +20,4 @@ export async function logMessage(client, message, level = 'info') {
     console.log(`${consolePrefix} ${message}`);
   }
 
-  // Discord Channel output
-  const channelId = process.env.CH_LOGS;
-  if (!channelId) return;
-
-  try {
-    const channel = client.channels.cache.get(channelId) || await client.channels.fetch(channelId);
-    if (channel && channel.isTextBased()) {
-      let emoji = 'ℹ️';
-      if (level === 'warn') emoji = '⚠️';
-      if (level === 'error') emoji = '🚨';
-      if (level === 'success') emoji = '✅';
-
-      await channel.send(`\`[${timestamp.split('T')[1].slice(0, 8)}]\` ${emoji} **[${level.toUpperCase()}]** ${message}`);
-    }
-  } catch (err) {
-    console.error(`[Logger Fail] Failed to send log to Discord channel ${channelId}:`, err.message);
-  }
 }
